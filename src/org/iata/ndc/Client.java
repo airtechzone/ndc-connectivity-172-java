@@ -27,11 +27,10 @@ public class Client
 
 		try
 		{
-			// Make an enquiry to the airline
-			//
+			// Make a request to the airline
 			HttpPost request = new HttpPost( "API-ENDPOINT-URL-GOES-HERE" ); 
 			
-			InputStreamReader is = new InputStreamReader(Client.class.getResourceAsStream( "/AirShoppingRQ.xml" ) );
+			InputStreamReader is = new InputStreamReader(Client.class.getResourceAsStream( "/resources/AirShoppingRQ.xml" ) );
 			StringBuilder sb = new StringBuilder();
 			BufferedReader br = new BufferedReader( is );
 			String read = br.readLine();
@@ -53,7 +52,6 @@ public class Client
 			HttpResponse response = httpClient.execute( request );
 
 			// Read the response
-			//
 			is = new InputStreamReader( response.getEntity().getContent() );
 			sb = new StringBuilder();
 			br = new BufferedReader( is );
@@ -68,9 +66,9 @@ public class Client
 			System.out.println( "------------------------------------------------------------" );
 			System.out.println( "Received Response to request:" );
 			System.out.println( sb.toString() );
+			System.out.println( "------------------------------------------------------------" );
 
 			// Use SAX to parse the document
-			//
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			factory.setNamespaceAware( true );
